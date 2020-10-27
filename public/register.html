@@ -1,12 +1,12 @@
 <html>
 
 <head>
-  <title>Express</title>
+  <title>Register</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
 <body>
-  <script type="module" src="/js/renderAllAnimals.js"></script>
+  <!-- <script type="module" src="/js/renderAllAnimals.js"></script> -->
   <header>
     <div class="header-image"></div>
     <div class="logo-container">
@@ -20,8 +20,38 @@
         <a href="/about.html">About</a>
     </nav>
     </div>
-    
   </header>
+  <main>
+    <h3 class="intro">Record a beast in this ledger.</h3>
+    <form action="/api/animals" method="post" id="register-form">
+      <div class="field">
+        <label for="Name">Name</label>
+        <input type="text" name="name" id="name" placeholder="Lady">
+      </div>
+      
+      <div class="field">
+        <label for="species">Species</label>
+        <select type="text" name="species" id="species" placeholder="Lady">
+          <option value="Dire Wolf" selected>Dire Wolf</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Cat">Cat</option>
+          <option value="Dog">Dog</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="Description">Description</label>
+        <textarea type="text" name="description" id="description" placeholder="Lady" form="register-form"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="Name">Age</label>
+        <input type="number" name="age" id="age" placeholder=20>
+      </div>
+
+      <input type="submit"></input>
+    </form>
+  </main>
 </body>
 
 </html>

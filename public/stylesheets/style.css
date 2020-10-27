@@ -7,11 +7,8 @@
   --header-bg-image: url("/images/westeros.jpg");
   --header-bg-color:#4B4954;
   --main-bg-color:#4B4954;
-  /* --main-bg-color: #f2d8bf; */
   --main-font-color: #eeeede;
   --sec-font-color:  #ffe7b3;
-
-  /* --sec-font-color: #4B4954; */
   --other-color: #AD8843;
   --other-color-2: #798585;
 }
@@ -27,7 +24,7 @@ html, body {
 }
 
 body, main {
-  font-family: 'MedievalSharp', cursive;
+  font-family: cursive;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,7 +107,7 @@ main {
 }
 
 .intro {
-  margin: 50px;
+  margin: 40px;
   color: var(--sec-font-color);
 }
 
@@ -155,3 +152,40 @@ main {
   opacity: 1;
 }
 
+/****************
+  Form
+*****************/
+
+form {
+  width: 600px;
+}
+
+.field {
+  font-family: cursive;
+  display: flex;
+  flex-direction: column;
+  margin: 25px 0;
+  color: var(--sec-font-color);
+}
+
+input, select, textarea {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+select {
+  font-size: 20px;
+}
+
+input[type="text"], input[type="number"], select, textarea {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid var(--sec-font-color);
+  color: var(--sec-font-color);
+  font-family: cursive;
+}
+
+textarea {
+  background: rgba(0,0,0,0.2);
+}

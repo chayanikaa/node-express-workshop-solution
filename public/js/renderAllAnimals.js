@@ -1,13 +1,11 @@
-import './config.js';
-
 async function fetchAllAnimals() {
-  const response = await fetch(`http://${config.apiServer.hostname}:${config.apiServer.port}/api/animals`);
+  const query = species ? `?species=${species}` : '';
+  const response = await fetch(`/api/beasts${query}`);
   return await response.json();
 }
 
 async function renderAllAnimals() {
   const data = await fetchAllAnimals();
-  console.log(data);
   const gridNode = document.querySelector('.image-grid');
   data.forEach(element => {
     const wrapper = document.createElement('div');

@@ -1,9 +1,11 @@
-const express = require('express');
+const http = require('http');
 const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
 
-const animalsRouter = require('./routes/animals');
+const express = require('express');
+const logger = require('morgan');
+const { errors } = require('celebrate');
+
+const beastRouter = require('./routes/beasts');
 
 const app = express();
 
@@ -11,10 +13,15 @@ app.use(logger('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/data/assets', express.static(path.join(__dirname, 'data', 'assets')));
 
-app.use('/api', animalsRouter);
+app.use('/api', beastRouter);
 
-module.exports = app;
+app.use(errors());
+
+app.use((err, req, res, next) => {
+  res.send('Not Found.');
+});
+
+http.createServer(app).listen(process.env.PORT || 3000);

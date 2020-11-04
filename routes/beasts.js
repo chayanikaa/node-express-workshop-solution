@@ -11,8 +11,7 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '..', 'public', 'data', 'assets'));
   },
   filename: function (req, file, cb) {
-    //console.log(file.fieldname + '-' + Date.now() + '.' + file.originalname.split('.')[1]);
-    cb(null, `${file.originalname}-${Date.now()}.${file.originalname.split('.')[1]}`);
+    cb(null, `${Date.now()}-${file.originalname}`);
   }
 })
 
@@ -21,15 +20,20 @@ var upload = multer({ storage });
 beastsRouter.route('/beasts')
   .get(validateQueryString, async (req, res, next) => {
     try {
-      res.json(await beasts.getAll());
+      const { species } = req.query;
+      const allBeasts = await beasts.getAll();
+      let results = allBeasts;
+      if (species) {
+        results = allBeasts.filter(beast => beast.species === species);
+      }
+      res.json(results);
     } catch (e) {
       next(e);
     }
   })
   .post(upload.single('image'), validateBeastBody, async (req, res, next) => {
     try {
-      console.log(req.body, req.files);
-      const newBeast = await beasts.save(req.body);
+      const newBeast = await beasts.save({ ...req.body, image: `data/assets/${req.file.filename}`});
       res.json(newBeast);
     } catch (e) {
       next(e);

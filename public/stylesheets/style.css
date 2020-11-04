@@ -131,7 +131,7 @@ main {
   height: 300px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: cover;
 }
 
 .grid-image .description {

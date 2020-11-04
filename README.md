@@ -1,4 +1,4 @@
-# Westeros Beast Ledger
+# Westeros Beast Ledger 🐉
 
 Welcome Maester Nodeon, you have inherited this ledger from your predecessor.
 
@@ -12,8 +12,16 @@ Ahem, we're going to turn a little technical now.
 3. Add support for query parameter `species` in the created endpoint. Return an array of records that match the type.
     - Checkout the `Dragons` and `Dire wolves` pages!
 4. Checkout the `Register a Beast` page. Create a handler for `POST /api/animals`. Save this information back to `data/animals.json`.
-    - Add support for saving the image file in the `public/data-images` directory.
-5. Implement a `PUT /api/animals/:id` endpoint to replace the details of a beast.
-6. Implement `DELETE /api/animals/:id` endpoint to delete a beast from the ledger.
 
-4, 5, 6 
+Finished? How about some additional challenges? 😁
+
+5. Add support for saving the image file in the `public/data/images` directory.
+   1. Send file data with the form from the frontend by adding `enctype` to the form.
+
+   ```html
+    <form action="/api/beasts" method="post" id="register-form"  enctype="multipart/form-data">
+   ```
+
+6. Implement a `PUT /api/animals/:id` endpoint to replace the details of a beast.
+7. Implement `DELETE /api/animals/:id` endpoint to delete a beast from the ledger.
+

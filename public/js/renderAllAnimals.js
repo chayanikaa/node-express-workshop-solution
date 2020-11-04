@@ -9,9 +9,10 @@ async function renderAllAnimals() {
   const gridNode = document.querySelector('.image-grid');
   data.forEach(element => {
     const wrapper = document.createElement('div');
+    const imageUrl = element.image || '/data/assets/drogon.png';
     wrapper.innerHTML= `
       <div class="grid-image-wrapper">
-        <div style="background-image: url(${element.image})" class="grid-image">
+        <div style="background-image: url(${imageUrl})" class="grid-image">
           <div class="description">
             <h3>${element.name}</h3>
             <p>${element.description}</p>

@@ -1,5 +1,7 @@
 # Westeros Beast Ledger 🐉
 
+## Problem
+
 Welcome Maester Nodeon, you have inherited this ledger from your predecessor.
 
 Complete the following tasks to turn this ledger into a wealth of information for all of Westeros.
@@ -24,3 +26,10 @@ Finished? How about some additional challenges? 😁
 
 6. Implement a `PUT /api/beasts/:id` endpoint to replace the details of a beast.
 7. Implement `DELETE /api/beasts/:id` endpoint to delete a beast from the ledger.
+
+## Running the solution
+
+```bash
+npm i
+npm start
+```

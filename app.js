@@ -14,10 +14,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Expose all files in public dir under / path of app
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', beastRouter);
 
+// Handle validation errors from celebrate
 app.use(errors());
 
 app.use((err, req, res, next) => {

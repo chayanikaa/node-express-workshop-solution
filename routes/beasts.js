@@ -6,6 +6,7 @@ var multer  = require('multer');
 
 const beastsRouter = require('express').Router();
 
+// Setting up storage for image file with POST request
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, path.join(__dirname, '..', 'public', 'data', 'assets'));
@@ -15,6 +16,7 @@ const storage = multer.diskStorage({
   }
 })
 
+// upload.single will parse a single file and attach the data to the request
 var upload = multer({ storage });
 
 beastsRouter.route('/beasts')
@@ -33,8 +35,8 @@ beastsRouter.route('/beasts')
   })
   .post(upload.single('image'), validateBeastBody, async (req, res, next) => {
     try {
-      const newBeast = await beasts.save({ ...req.body, image: `data/assets/${req.file.filename}`});
-      res.json(newBeast);
+      await beasts.save({ ...req.body, image: `data/assets/${req.file.filename}`});
+      res.redirect('/');
     } catch (e) {
       next(e);
     }
